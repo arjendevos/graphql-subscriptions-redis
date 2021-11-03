@@ -1,0 +1,46 @@
+{
+  "name": "subscriptions",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "generate": "npx graphql-codegen",
+    "prismix": "npx prismix && prisma format",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma": "yarn prismix && yarn prisma:generate && yarn prisma:migrate",
+    "dev": "concurrently \"ts-node-dev --no-notify --respawn --transpile-only src/server\" \"yarn generate --watch\" ",
+    "clean": "rm -rf dist",
+    "build": "yarn clean && yarn generate && tsc",
+    "start": "node dist/server"
+  },
+  "author": "Arjen de Vos",
+  "license": "MIT",
+  "private": "true",
+  "devDependencies": {
+    "@types/ioredis": "^4.28.1",
+    "@types/lodash": "^4.14.172",
+    "concurrently": "^6.2.1",
+    "prettier": "^2.4.0",
+    "prisma": "^3.0.2",
+    "prismix": "^1.0.19",
+    "ts-node": "^10.2.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "@graphql-codegen/cli": "^2.2.0",
+    "@graphql-codegen/typescript": "^2.2.1",
+    "@graphql-codegen/typescript-resolvers": "^2.2.0",
+    "@graphql-tools/graphql-file-loader": "^7.1.0",
+    "@graphql-tools/load": "^7.3.0",
+    "@prisma/client": "^3.0.2",
+    "apollo-server-core": "^3.4.0",
+    "apollo-server-express": "^3.3.0",
+    "graphql": "^15.5.3",
+    "graphql-redis-subscriptions": "^2.4.0",
+    "graphql-subscriptions": "^2.0.0",
+    "ioredis": "^4.28.0",
+    "jsonwebtoken": "^8.5.1",
+    "subscriptions-transport-ws": "^0.11.0"
+  }
+}

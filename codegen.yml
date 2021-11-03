@@ -1,0 +1,16 @@
+schema: ./src/modules/**/*.graphql
+generates:
+  ./src/graphql/types.ts:
+    config:
+      mappers:
+        Account: ./node_modules/prisma/client/index.d.ts#Account
+        Post: ./node_modules/prisma/client/index.d.ts#Post
+      namingConvention:
+        enumValues: change-case#constantCase
+      enumsAsTypes: true
+      allowParentTypeOverride: true
+      operationResultSuffix: "Result"
+      maybeValue: "T | undefined | null"
+    plugins:
+      - typescript
+      - typescript-resolvers

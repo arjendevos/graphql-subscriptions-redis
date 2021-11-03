@@ -1,0 +1,26 @@
+scalar DateTime
+
+type Query {
+  messages: [Chat]
+}
+
+type Mutation {
+  createMessage(message: String!, senderId: Int!, receiverId: Int!): Chat
+}
+
+type Subscription {
+  onMessageCreated(subscriberId: Int!): Chat
+}
+
+type Chat {
+  id: Int!
+  message: String!
+  receiverId: Int!
+  senderId: Int!
+}
+
+type User {
+  id: Int!
+  name: String!
+  avatarUrl: String!
+}
